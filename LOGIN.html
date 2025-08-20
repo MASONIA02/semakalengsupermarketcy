@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>Chisanyama's Login Page</title>
+    <link rel="stylesheet" href="STYLE.css">
+    <script>
+        function redirectToHomePage(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+            // Add your login validation logic here
+            window.location.href = 'home.html'; // Redirect to the home page
+        }
+    </script>
+</head>
+<body>
+    <div class="Login-container">
+        <h1>LOGIN</h1>
+        <form onsubmit="redirectToHomePage(event)">
+            <input type="text" placeholder="Username" required><br>
+            <input type="password" placeholder="Password" required><br>
+            <div>
+                <input type="checkbox" id="Remember-me">
+                <label for="Remember-me">Remember me</label>
+                <a href="https://www.google.com" class="Forgot-password">Forgot Password?</a>
+            </div><br>
+            <button type="submit" class="btn">LOGIN</button>
+            <div class="register-link">Don't have an account? <a href="https://www.google.com">Register here</a></div>
+        </form>
+    </div>
+</body>
+</html>

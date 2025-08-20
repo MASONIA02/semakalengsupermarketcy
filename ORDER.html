@@ -1,0 +1,319 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Here</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('BACKGROUND.jpg');
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            background: transparent;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+        header {
+            background-color: #046926;
+            font-size: medium;
+            padding: 15px;
+            border-radius: 15px 15px 0 0;
+            color:black;
+            text-align: center;
+        }
+        nav {
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        nav a {
+            color: #fa0a0a;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 5px;
+        }
+        nav a:hover {
+            background-color: rgba(17, 243, 17, 0.959);
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        section {
+            margin: 20px 0;
+        }
+        h2 {
+            text-align: center;
+            color: #07f3b8;
+            font-size: 1.8em;
+            border-bottom: 2px solid #ec3406;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .menu-section {
+            display: flex;
+            flex-wrap: nowrap; 
+            overflow-x: auto; 
+            gap: 20px;
+            justify-content: center;
+            padding: 10px 0;
+        }
+        .menu-item {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 15px;
+            width: 180px; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        .menu-item img {
+            width: 100%; 
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .menu-item label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .menu-item input {
+            width: 60px;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            text-align: center;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+        .menu-item input:focus {
+            border-color: #ec3406;
+            outline: none;
+        }
+        .order-summary {
+            background-color: #f5f5f5;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .order-summary h3 {
+            text-align: center;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #ec3406;
+        }
+        .order-summary ul {
+            list-style: none;
+            padding: 0;
+            font-size: 1.1em;
+        }
+        .order-summary ul li {
+            margin-bottom: 10px;
+        }
+        .order-summary ul li span {
+            font-weight: bold;
+            float: right;
+        }
+        .summary-amounts {
+            margin-top: 15px;
+            font-size: 1.2em;
+        }
+        .summary-amounts div {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        .summary-amounts .total-amount {
+            color: #ec3406;
+            font-weight: bold;
+        }
+        .order-form button {
+            margin-top: 20px;
+            padding: 15px 30px;
+            background-color: #ec3406;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+        .order-form button:hover {
+            background-color: #d02f05;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Place Your Order</h1>
+            <nav>
+                <a href="LOGIN.html">Login</a>
+                <a href="HOME.html">Home</a>
+                <a href="MENU.html">Menu</a>
+                <a href="ABOUT.html">About Us</a>
+                <a href="CONTACT.html">Contact</a>
+            </nav>
+        </header>
+
+        <form id="order-form" class="order-form">
+            <section>
+                <h2>Meals</h2>
+                <div class="menu-section">
+                    <div class="menu-item">
+                        <img src="PAP.jpg" alt="Pap">
+                        <label for="pap">Pap</label>
+                        <input type="number" id="pap" name="pap" min="0" value="0" onchange="updateOrderSummary()">
+                    </div>
+                    <div class="menu-item">
+                        <img src="WORS.jpg" alt="Wors">
+                        <label for="wors">Wors</label>
+                        <input type="number" id="wors" name="wors" min="0" value="0" onchange="updateOrderSummary()">
+                    </div>
+                    <div class="menu-item">
+                        <img src="steak.jpg" alt="Steak">
+                        <label for="steak">Steak</label>
+                        <input type="number" id="steak" name="steak" min="0" value="0" onchange="updateOrderSummary()">
+                    </div>
+                    <div class="menu-item">
+                        <img src="CHAKALAKA.jpeg" alt="Chakalaka">
+                        <label for="chakalaka">Chakalaka</label>
+                        <input type="number" id="chakalaka" name="chakalaka" min="0" value="0" onchange="updateOrderSummary()">
+                    </div>
+                    <div class="menu-item">
+                        <img src="chicken.webp" alt="Chicken">
+                        <label for="chicken">Chicken</label>
+                        <input type="number" id="chicken" name="chicken" min="0" value="0" onchange="updateOrderSummary()">
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Drinks</h2>
+                <div class="menu-section">
+                    <div class="menu-item">
+                        <img src="BEER.jpg" alt="Beer">
+                        <label for="beer">Beer</label>
+                        <input type="number" id="beer" name="beer" min="0" value="0" onchange="updateOrderSummary()">
+                    </div>
+                    <div class="menu-item">
+                        <img src="JUICE.jpg" alt="Juice">
+                        <label for="juice">Juice</label>
+                        <input type="number" id="juice" name="juice" min="0" value="0" onchange="updateOrderSummary()">
+                    </div>
+                    <div class="menu-item">
+                        <img src="Water-Bottle.jpg" alt="Bottlewater">
+                        <label for="bottlewater">Bottlewater</label>
+                        <input type="number" id="bottlewater" name="bottlewater" min="0" value="0" onchange="updateOrderSummary()">
+                    </div>
+                    <div class="menu-item">
+                        <img src="COLDDRINK.jpeg" alt="Colddrink">
+                        <label for="colddrink">Colddrink</label>
+                        <input type="number" id="colddrink" name="colddrink" min="0" value="0" onchange="updateOrderSummary()">
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Desserts</h2>
+                <div class="menu-section">
+                    <div class="menu-item">
+                        <img src="CARROT CAKE.jpg" alt="Icecream">
+                        <label for="Carrot cake">Carrot Cake</label>
+                        <input type="number" id="Carrotcake" name="Carrotcake" min="0" value="0" onchange="updateOrderSummary()">
+                    </div>
+                    <div class="menu-item">
+                        <img src="TRIFLE.jpg" alt="Pudding">
+                        <label for="TRIFLE">TRIFLE</label>
+                        <input type="number" id="trifle" name="trifle" min="0" value="0" onchange="updateOrderSummary()">
+                    </div>
+                    <div class="menu-item">
+                        <img src="MILK-TART.jpg" alt="Cake">
+                        <label for="MILK-TART">MILK-TART</label>
+                        <input type="number" id="milktart" name="milktart" min="0" value="0" onchange="updateOrderSummary()">
+                    </div>
+                </div>
+            </section>
+
+            <div class="order-summary">
+                <h3>Order Summary</h3>
+                <ul id="order-summary-list">
+                 
+                </ul>
+                <div class="summary-amounts">
+                    <div>Subtotal (85% of Original): <span id="subtotal">R0.00</span></div>
+                    <div>VAT (15% of Original): <span id="vat">R0.00</span></div>
+                    <div class="total-amount">Total (Original Price): <span id="total">R0.00</span></div>
+                </div>
+            </div>
+
+            <button type="submit">Place Order</button>
+        </form>
+    </div>
+
+    <script>
+        const prices = {
+            pap: 10.00,
+            wors: 20.00,
+            steak: 50.00,
+            chakalaka: 15.00,
+            chicken: 40.00,
+            beer: 20.00,
+            juice: 15.00,
+            bottlewater: 8.00,
+            colddrink: 12.00,
+            milktart: 20.00,
+            trifle: 30.00,
+            Carrotcake: 25.00
+        };
+
+        function updateOrderSummary() {
+            const orderSummaryList = document.getElementById('order-summary-list');
+            orderSummaryList.innerHTML = '';
+
+            let originalSubtotal = 0;
+
+            Object.keys(prices).forEach(item => {
+                const quantity = parseInt(document.getElementById(item).value);
+                if (quantity > 0) {
+                    const itemCost = prices[item] * quantity;
+                    originalSubtotal += itemCost;
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `${item.charAt(0).toUpperCase() + item.slice(1)} x${quantity}`;
+                    const itemPrice = document.createElement('span');
+                    itemPrice.textContent = `R${itemCost.toFixed(2)}`;
+                    listItem.appendChild(itemPrice);
+                    orderSummaryList.appendChild(listItem);
+                }
+            });
+
+            const subtotal = originalSubtotal * 0.85;  
+            const vat = originalSubtotal * 0.15;       
+            const total = originalSubtotal;           
+
+            document.getElementById('subtotal').textContent = `R${subtotal.toFixed(2)}`;
+            document.getElementById('vat').textContent = `R${vat.toFixed(2)}`;
+            document.getElementById('total').textContent = `R${total.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
